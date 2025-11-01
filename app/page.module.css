@@ -10,8 +10,22 @@
   align-items: center;
 }
 
+.headerLogo {
+  height: 40px;
+  width: auto;
+}
+
 .title {
-  font-size: 1.5rem;
+  font-size: var(--font-sm);
   font-weight: bold;
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--font-lg);
+  }
+  .headerLogo {
+    height: 60px;
+  }
 }

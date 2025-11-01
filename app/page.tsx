@@ -1,5 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import Hero from "./components/Hero";
+import TextBlock from "./components/TextBlock";
+import FeatureGrid from "./components/FeatureGrid";
+import Testimonials from "./components/Testimonials";
+import CtaBanner from "./components/CtaBanner";
 import { pageData } from "./data/mock-data";
 
 import styles from "./page.module.css";
@@ -21,7 +26,13 @@ export default function Home() {
       <div className="container">
         <div className={styles.headerWrapper}>
           <Link href="/" aria-label="Go to Avant Mutual homepage">
-            <Image src="/images/avant-logo.svg" alt="Avant Mutual Logo" width={150} height={50} />
+            <Image
+              src="/images/avant-logo.svg"
+              alt="Avant Mutual Logo"
+              width={150}
+              height={50}
+              className={styles.headerLogo}
+            />
           </Link>
           <h1 className={styles.title}>{pageData.title}</h1>
         </div>
@@ -35,8 +46,7 @@ export default function Home() {
        * CtaBanner
        * *******/}
 
-      {/*
-         {pageData.sections.map((section, index) => {
+      {pageData.sections.map((section, index) => {
         switch (section.type) {
           case "hero":
             return <Hero key={index} data={section} />;
@@ -52,7 +62,6 @@ export default function Home() {
             return null;
         }
       })}
-       */}
     </main>
   );
 }

@@ -1,0 +1,18 @@
+.textBlockSection {
+  display: block;
+  padding: 2.5rem 0;
+  text-align: center;
+  background-color: var(--text-accent);
+}
+
+.textBlockHeading {
+  font-size: var(--font-2xl);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.textBlockBody {
+  font-size: var(--font-md);
+  color: var(--white);
+}

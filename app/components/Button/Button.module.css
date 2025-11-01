@@ -1,0 +1,52 @@
+.buttonCta {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 4rem;
+  font-weight: 600;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+  margin-top: 0;
+  padding: 11px 28px;
+  border: 2px solid var(--white);
+  cursor: pointer;
+  outline: none;
+}
+
+.buttonCta:focus-visible {
+  outline: 3px solid var(--accessibility-focus);
+  outline-offset: 2px;
+}
+
+.primary {
+  background-color: var(--text-accent);
+  color: var(--white);
+}
+
+.primary:hover {
+  background-color: var(--text-accent-dark, var(--hover-bg));
+}
+
+.secondary {
+  background-color: var(--white);
+  color: var(--text-accent);
+}
+
+.secondary:hover {
+  background-color: var(--secondary-hover-bg);
+  border-color: var(--text-accent);
+}
+
+@media (min-width: 481px) {
+  .buttonCta {
+    padding: 12px 32px;
+    font-size: var(--font-sm);
+  }
+}
+
+@media (min-width: 769px) {
+  .buttonCta {
+    font-size: var(--font-md);
+    padding: 14px 38px;
+  }
+}
