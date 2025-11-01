@@ -149,6 +149,7 @@ components/
 **Future considerations:**
 
 - With a design system, implement CSS variables across typography, line height and layout spacing and colours
+- The design was a mix of taking examples from https://avant.org.au/ homepage and from the top of my head quickly, trying to keep to the estimated time limit, with an actual design this could look visually much cleaner and nicer.
 
 ## Project Structure
 
