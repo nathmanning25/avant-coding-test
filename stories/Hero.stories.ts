@@ -34,17 +34,17 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    args: {
-        data: {
-            "type": "hero",
-            "heading": "asdasdas",
-            "subheading": "asdsaasdsad",
-            "image": "/images/hero-banner.jpg",
+	args: {
+		data: {
+			"type": "hero",
+			"heading": "Experience Innovation with Bondi",
+			"subheading": "Powering digital transformation through creativity and technology.",
+			"image": "/images/hero-banner.jpg",
 
-            "cta": {
-                "text": "Get Started",
-                "link": "/contact"
-            }
-        }
-    }
+			"cta": {
+				"text": "Get Started",
+				"link": "/contact"
+			}
+		}
+	}
 };
