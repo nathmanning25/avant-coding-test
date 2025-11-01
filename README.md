@@ -1,36 +1,192 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Avant Coding Test - Next.js Project
+
+This is a Next.js application built with TypeScript and React 19, featuring a modular component-based architecture for building responsive web pages.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+This project requires Node.js version 18 or higher.
+
+### Installation
+
+1. Clone the repository
+2. Navigate to the project directory
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+To run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build and run the application for production:
 
-## Learn More
+```bash
+# Build the application
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start the production server
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Architecture
 
-## Deploy on Vercel
+### Data Management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project uses `app/data/mock-data.ts` as the central data source that simulates API responses. The mock data returns a JSON structure that replicates what would typically come from a real API endpoint.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Key features of the data layer:**
+
+- **Centralized Data Source**: All component data is managed through `mock-data.ts`
+- **API Simulation**: The data structure mimics real API responses with proper typing
+- **Flexible Content**: Supports different section types (hero, textBlock, featureGrid, testimonial, ctaBanner)
+- **Type Safety**: Full TypeScript support with defined interfaces in `app/lib/services/types.ts`
+
+### Component Rendering System
+
+The application uses a **switch-case pattern** in `app/page.tsx` to dynamically render components based on the data structure:
+
+```typescript
+{
+  pageData.sections.map((section, index) => {
+    switch (section.type) {
+      case "hero":
+        return <Hero key={`${section.type}-${index}`} data={section} />;
+      case "textBlock":
+        return <TextBlock key={`${section.type}-${index}`} data={section} />;
+      case "featureGrid":
+        return <FeatureGrid key={`${section.type}-${index}`} data={section} />;
+      case "testimonial":
+        return <Testimonials key={`${section.type}-${index}`} data={section} />;
+      case "ctaBanner":
+        return <CtaBanner key={`${section.type}-${index}`} data={section} />;
+      default:
+        return null;
+    }
+  });
+}
+```
+
+This approach provides:
+
+- **Dynamic Content Rendering**: Components are rendered based on data configuration
+- **Flexible Page Structure**: Easy to reorder, add, or remove sections
+- **Maintainable Code**: Clear separation between data and presentation
+
+### Component Architecture
+
+Each component follows a consistent modular structure:
+
+```
+components/
+├── ComponentName/
+│   ├── ComponentName.tsx      # Component logic and JSX
+│   ├── ComponentName.module.css # Component-specific styles
+│   └── index.ts              # Export file
+```
+
+**Components:**
+
+- **Hero**: Main banner section with heading, subheading, image, and CTA
+- **TextBlock**: Simple text content sections
+- **FeatureGrid**: Grid layout for showcasing features with icons
+- **Testimonials**: Customer testimonial carousel/grid
+- **CtaBanner**: Call-to-action banner sections
+- **Button**: Reusable button component
+
+### CSS Modules & Styling
+
+**CSS Modules Implementation:**
+
+- Each component has its own `.module.css` file
+- **Style Isolation**: Prevents CSS leakage between components
+- **Scoped Styling**: Class names are automatically scoped to components
+- **Maintainable**: Easy to modify component styles without affecting others
+
+**Mobile-First Responsive Design:**
+
+- All components are built with mobile-first approach
+- Progressive enhancement for larger screens
+- Better performance on mobile devices
+- Easier maintenance and debugging
+
+**Accessibility Considerations:**
+
+- Semantic HTML structure in all components
+- Proper ARIA labels and attributes
+- Keyboard navigation support
+- Screen reader compatibility
+
+**Future considerations:**
+
+- With a design system, implement CSS variables across typography, line height and layout spacing and colours
+
+## Project Structure
+
+```
+avant-coding-test/
+├── app/
+│   ├── components/           # Reusable UI components
+│   │   ├── Button/
+│   │   ├── CtaBanner/
+│   │   ├── FeatureGrid/
+│   │   ├── Hero/
+│   │   ├── Testimonials/
+│   │   └── TextBlock/
+│   ├── data/
+│   │   └── mock-data.ts     # Mock API data
+│   ├── lib/
+│   │   └── services/
+│   │       ├── api.ts       # API service functions
+│   │       └── types.ts     # TypeScript type definitions
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout component
+│   └── page.tsx             # Home page component
+├── public/
+│   └── images/              # Static image assets
+└── package.json
+```
+
+## Technologies Used
+
+- **Next.js 16.0.1** - React framework with App Router
+- **React 19.2.0** - UI library
+- **TypeScript** - Type safety and better developer experience
+- **CSS Modules** - Component-scoped styling
+- **ESLint** - Code linting and formatting
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Future Enhancements
+
+To transition from mock data to real API:
+
+1. Update the data fetching in `page.tsx`:
+
+```typescript
+// Uncomment and modify
+const pageData = await fetchPageData();
+```
+
+2. Implement API calls in `app/lib/services/api.ts`
+3. Update the component to be async
+
+This architecture makes it easy to switch from mock data to real API endpoints when ready for production deployment.
