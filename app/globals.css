@@ -1,0 +1,89 @@
+/* With more time I would expand these CSS root variables, with a spacing system, typography & line height and layout & spacing */
+
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --foreground: #171717;
+  --text-accent: #21409a;
+  --text-default: #5f6060;
+  --hover-bg: #2563eb;
+  --secondary-hover-bg: #f8fafc;
+  --orange: #f2610d;
+  --light-green: #159d90;
+  --accessibility-focus: #4a90e2;
+
+  /* Font Sizes */
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 1.75rem;
+  --font-3xl: 2rem;
+  --font-4xl: 2.5rem;
+  --font-5xl: 3rem;
+
+  /* Breakpoints */
+  /* Padding */
+  /* Margins */
+  /* Layout & Spacing */
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--text-accent);
+}

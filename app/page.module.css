@@ -1,0 +1,17 @@
+.main {
+  padding: 4rem 0rem;
+  text-align: center;
+}
+
+.headerWrapper {
+  margin: 2rem 0;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
