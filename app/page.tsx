@@ -49,15 +49,15 @@ export default function Home() {
       {pageData.sections.map((section, index) => {
         switch (section.type) {
           case "hero":
-            return <Hero key={index} data={section} />;
+            return <Hero key={`${section.type}-${index}`} data={section} />;
           case "textBlock":
-            return <TextBlock key={index} data={section} />;
+            return <TextBlock key={`${section.type}-${index}`} data={section} />;
           case "featureGrid":
-            return <FeatureGrid key={index} data={section} />;
+            return <FeatureGrid key={`${section.type}-${index}`} data={section} />;
           case "testimonial":
-            return <Testimonials key={index} data={section} />;
+            return <Testimonials key={`${section.type}-${index}`} data={section} />;
           case "ctaBanner":
-            return <CtaBanner key={index} data={section} />;
+            return <CtaBanner key={`${section.type}-${index}`} data={section} />;
           default:
             return null;
         }

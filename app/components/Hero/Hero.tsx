@@ -13,6 +13,10 @@ interface HeroProps {
 }
 
 export default function Hero({ data }: HeroProps) {
+  if (!data || !data.heading || !data.subheading || !data.image || !data.cta || !data.cta.text || !data.cta.link) {
+    return null;
+  }
+
   return (
     <section className={styles.heroSection} aria-labelledby="hero-heading">
       <div className={styles.imageContainer}>
