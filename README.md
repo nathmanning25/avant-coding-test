@@ -1,12 +1,12 @@
 # Avant Coding Test - Next.js Project
 
-This is a Next.js application built with TypeScript and React 19, featuring a modular component-based architecture for building responsive web pages.
+This is a Next.js application built with TypeScript and React 19 and Storybook, featuring a modular component-based architecture for building responsive web pages.
 
 ## Getting Started
 
 ### Prerequisites
 
-This project requires Node.js version 18 or higher.
+This project requires Node.js version 20 or higher.
 
 ### Installation
 
@@ -41,6 +41,22 @@ npm start
 ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000).
+
+### Storybook
+
+To run Storybook for component development and testing:
+
+```bash
+npm run storybook
+```
+
+Storybook will be available at [http://localhost:6006](http://localhost:6006).
+
+To build Storybook for production:
+
+```bash
+npm run build-storybook
+```
 
 ## Project Architecture
 
@@ -138,6 +154,10 @@ components/
 
 ```
 avant-coding-test/
+├── .storybook/              # Storybook configuration
+│   ├── main.ts             # Storybook main configuration
+│   ├── preview.ts          # Global parameters and decorators
+│   └── vitest.setup.ts     # Vitest setup for Storybook tests
 ├── app/
 │   ├── components/           # Reusable UI components
 │   │   ├── Button/
@@ -157,7 +177,11 @@ avant-coding-test/
 │   └── page.tsx             # Home page component
 ├── public/
 │   └── images/              # Static image assets
-└── package.json
+├── stories/                 # Storybook stories
+│   └── Hero.stories.ts     # Component stories for Storybook
+├── package.json
+├── vitest.config.ts         # Vitest configuration
+└── vitest.shims.d.ts       # Vitest type definitions
 ```
 
 ## Technologies Used
@@ -167,6 +191,8 @@ avant-coding-test/
 - **TypeScript** - Type safety and better developer experience
 - **CSS Modules** - Component-scoped styling
 - **ESLint** - Code linting and formatting
+- **Storybook 10.0.2** - Tool for building UI components in isolation
+- **Vitest** - Testing framework for component testing
 
 ## Scripts
 
@@ -174,6 +200,8 @@ avant-coding-test/
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run storybook` - Start Storybook development server
+- `npm run build-storybook` - Build Storybook for production
 
 ## Future Enhancements
 
